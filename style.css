@@ -1,13 +1,25 @@
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Reset básico de margens e box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.cabecalho-link {
-    color: #fff;
-    text-decoration: none;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7e3e1c;
 }
 
 h1 {
@@ -15,34 +27,99 @@ h1 {
     font-size: 24px;
 }
 
-footer {
-    background-color: #7e3e1c;
-    padding: 15px 25px;
+.cabecalho-link {
     color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cabecalho-link:hover {
+    text-decoration: underline;
+}
+
+/* Conteúdo Principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Estrutura dos Cartões (Flashcards) */
+.cartao {
+    width: 260px;
+    height: 320px; /* Aumentado para caber bem a imagem e o texto */
+    perspective: 1000px; /* Adiciona profundidade 3D para o giro */
 }
 
 .cartao-interno {
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .cartao:hover .cartao-interno {
     transform: rotateY(180deg);
 }
 
+/* Frente e Verso do Cartão */
 .cartao-frente, .cartao-verso {
     position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     backface-visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
 }
 
 .cartao-verso {
     transform: rotateY(180deg);
+    background-color: #f0e6df; /* Fundo suave para o verso */
 }
 
-section {
+/* Ajustes da Imagem dentro do Card */
+.cartao-imagem {
+    width: 100%;
+    height: 65%;
+    object-fit: cover; /* Garante que a imagem não fique deformada */
+}
+
+/* Estilo do Texto */
+.cartao-frente p, .cartao-verso p {
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+    color: #333;
     display: flex;
-    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+/* Rodapé */
+footer {
+    background-color: #7e3e1c;
+    padding: 15px 25px;
+    color: #fff;
+    text-align: center;
 }
