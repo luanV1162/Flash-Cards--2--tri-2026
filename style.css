@@ -1,125 +1,140 @@
-/* Reset básico de margens e box-sizing */
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
+    font-family: 'Georgia', serif;
+    background-color: #121113;
+    color: #e0d6c3;
     min-height: 100vh;
-    background-color: #f5f2f2;
-    font-family: Arial, sans-serif;
-}
-
-/* Cabeçalho */
-.cabecalho {
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #7e3e1c;
-}
-
-h1 {
-    color: #fff;
-    font-size: 24px;
-}
-
-.cabecalho-link {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.cabecalho-link:hover {
-    text-decoration: underline;
-}
-
-/* Conteúdo Principal */
-main {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #333;
+.cabecalho {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #1c191e;
+    border-bottom: 2px solid #8b0000;
 }
 
-section {
+.cabecalho h1 {
+    margin: 0;
+    color: #d4af37;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+}
+
+.subtitulo {
+    color: #a09383;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.conteiner-flashcards {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    flex: 1;
 }
 
-/* Estrutura dos Cartões (Flashcards) */
-.cartao {
-    width: 260px;
-    height: 320px; /* Aumentado para caber bem a imagem e o texto */
-    perspective: 1000px; /* Adiciona profundidade 3D para o giro */
-}
-
-.cartao-interno {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+/* Estrutura do Flashcard */
+.flashcard {
+    background-color: transparent;
+    width: 320px;
+    height: 440px;
+    perspective: 1000px;
     cursor: pointer;
 }
 
-.cartao:hover .cartao-interno {
+.flashcard-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* Efeito de virar ao passar o mouse */
+.flashcard:hover .flashcard-interno {
     transform: rotateY(180deg);
 }
 
-/* Frente e Verso do Cartão */
-.cartao-frente, .cartao-verso {
+.flashcard-frente, .flashcard-verso {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid #3a323d;
+    background-color: #1c191e;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
-}
-
-.cartao-verso {
-    transform: rotateY(180deg);
-    background-color: #f0e6df; /* Fundo suave para o verso */
-}
-
-/* Ajustes da Imagem dentro do Card */
-.cartao-imagem {
-    width: 100%;
-    height: 65%;
-    object-fit: cover; /* Garante que a imagem não fique deformada */
-}
-
-/* Estilo do Texto */
-.cartao-frente p, .cartao-verso p {
-    padding: 12px;
-    font-size: 14px;
-    text-align: center;
-    color: #333;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    flex: 1;
 }
 
-/* Rodapé */
+.flashcard-verso {
+    transform: rotateY(180deg);
+    border-color: #8b0000;
+    background-color: #241e26;
+    justify-content: center;
+}
+
+.flashcard-imagem {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #3a323d;
+}
+
+.pergunta {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.resposta-conteudo h3 {
+    color: #d4af37;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.resposta-conteudo p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Tags de Destaque */
+.tag {
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+.tag-frente {
+    background-color: #3a323d;
+    color: #d4af37;
+}
+
+.tag-verso {
+    background-color: #8b0000;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
 footer {
-    background-color: #7e3e1c;
-    padding: 15px 25px;
-    color: #fff;
     text-align: center;
+    padding: 1rem;
+    background-color: #1c191e;
+    border-top: 1px solid #3a323d;
 }
